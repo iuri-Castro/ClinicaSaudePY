@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pacientes</title>
+</head>
+<body>
+    <h2>Pacientes cadastrados</h2>
+    <ul id="lista"></ul>
+    <button>
+        <a href="/">Voltar</a>
+    </button>
+
+    <script> fetch("/lista")
+        .then(r => r.json())
+        .then(pacientes => {
+            const ul = document.getElementById("lista");
+            pacientes.forEach(p => {
+                const li = document.createElement("li");
+                li.textContent = p.nome + " - " + p.idade + " anos - " + p.sexo + " - " + p.telefone;
+                ul.appendChild(li);
+            });
+        });</script>
+</body>
+</html>
