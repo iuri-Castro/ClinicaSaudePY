@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Paciente</title>
+</head>
+<body>
+    <h2>Buscar Paciente</h2>
+
+    
+<label for="nome">Nome:</label>
+<input type="text" id="nome" placeholder="Digite o nome">
+<button onclick="buscar()">Buscar</button>
+
+<p id="mensagem"></p>
+<ul id="lista"></ul>
+
+    <button>
+        <a href="/">Voltar</a>
+    </button>
+    <script>
+        async function buscar() {
+    const nome = document.getElementById("nome").value;
+    const resposta = await fetch("/buscar?nome=" + encodeURIComponent(nome));
+    const resultado = await resposta.json();
+    console.log(resultado);              
+
+    const ul = document.getElementById("lista");
+    const msg = document.getElementById("mensagem");
+    ul.innerHTML = "";
+    msg.textContent = resultado.length === 0 ? "Nenhum paciente encontrado." : "";
+
+    resultado.forEach(p => {
+        const li = document.createElement("li");
+        li.textContent = p.nome + " - " + p.idade + " anos - " + p.telefone;
+        ul.appendChild(li);
+    });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatisticas</title>
+</head>
+<body>
+    <h2>Estatísticas</h2>
+<p id="mensagem"></p>
+<p>Total de pacientes: <span id="total"></span></p>
+<p>Idade média: <span id="media"></span></p>
+<p>Paciente mais novo: <span id="menor"></span></p>
+<p>Paciente mais velho: <span id="maior"></span></p>
+<button><a href="/">Voltar</a></button>
+
+<script>
+fetch("/estatisticas")
+    .then(r => r.json())
+    .then(dados => {
+        if (dados.erro) {
+            document.getElementById("mensagem").textContent = dados.erro;
+            return;
+        }
+        document.getElementById("total").textContent = dados.total_pacientes;
+        document.getElementById("media").textContent = dados.media_idade.toFixed(1);
+        document.getElementById("menor").textContent = dados.menor_idade + " anos";
+        document.getElementById("maior").textContent = dados.maior_idade + " anos";
+    });
+</script>
+</body>
+</html>
