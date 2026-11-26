@@ -1,0 +1,10 @@
+body {
+    background: linear-gradient(to bottom, #1a0b3b 0%, #7b2ff7 35%, #ff2e93 65%, #ff8a3d 100%);
+    background-attachment: fixed;
+    min-height: 100%;
+    color: #fff;
+}
+.container {
+    text-align: center;
+    padding: 25vh ;
+}
