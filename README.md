@@ -52,5 +52,4 @@ ClinicaSaudePY/
 ## Autor
 
 **Iuri Dias de Castro**
-Estudante de Análise e Desenvolvimento de Sistemas (UNIC)
 [GitHub](https://github.com/iuri-Castro)
